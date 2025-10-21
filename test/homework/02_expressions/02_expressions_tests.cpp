@@ -1,5 +1,5 @@
 // test/homework/02_expressions/02_expressions_tests.cpp
-#include "hwexpressions.h"
+#include "../../../src/homework/02_expressions/hwexpressions.h"
 #include <cassert>
 #include <iostream>
 
