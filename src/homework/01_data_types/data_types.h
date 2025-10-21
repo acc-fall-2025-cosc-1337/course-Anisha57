@@ -1,8 +1,11 @@
-﻿//example
-int add_numbers(int num1, int num2);
+// src/homework/01_data_types/data_types.h
+#ifndef DATA_TYPES_H
+#define DATA_TYPES_H
 
-//write function prototype here
+// Function prototype
+int multiply_numbers(int num1, int num2);
 
+#endif
 
 
 
