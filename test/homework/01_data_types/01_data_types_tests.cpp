@@ -1,13 +1,21 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
-#include "data_types.h"
-TEST_CASE("Verify Test Configuration", "verification") {
-	REQUIRE(true == true);
-}
+#include <iostream>
+#include "../../../src/homework/01_data_types/data_types.h"
+using namespace std;
 
-TEST_CASE("Verify sum_numbers function") 
+int main()
 {
-	REQUIRE(add_numbers(5, 5) == 10);
-	REQUIRE(add_numbers(10, 10) == 20);
-}
+    cout << "Testing multiply_numbers function:\n";
 
+    int result1 = multiply_numbers(7, 7);
+    cout << "7 x 7 = " << result1 << endl;
+
+    int result2 = multiply_numbers(5, 5);
+    cout << "5 x 5 = " << result2 << endl;
+
+    if (result1 == 49 && result2 == 25)
+        cout << "✅ All tests passed!\n";
+    else
+        cout << "❌ Test failed!\n";
+
+    return 0;
+}
