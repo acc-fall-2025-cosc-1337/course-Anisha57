@@ -1,18 +1,16 @@
-// test/homework/02_expressions/02_expressions_tests.cpp
-#include "../../../src/homework/02_expressions/hwexpressions.h"
-#include <cassert>
-#include <iostream>
+// 02_expressions_tests.cpp
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+#include "hwexpressions.h"
 
-int main()
+TEST_CASE("Verify get_sales_tax_amount function")
 {
-    // Test sales tax calculation
-    assert(get_sales_tax_amount(100) == 6.75);
-    assert(get_sales_tax_amount(50) == 3.375);
+    REQUIRE(get_sales_tax_amount(10) == Approx(0.675));
+    REQUIRE(get_sales_tax_amount(20) == Approx(1.35));
+}
 
-    // Test tip calculation
-    assert(get_tip_amount(100, 0.20) == 20);
-    assert(get_tip_amount(50, 0.15) == 7.5);
-
-    std::cout << "All tests passed successfully!\n";
-    return 0;
+TEST_CASE("Verify get_tip_amount function")
+{
+    REQUIRE(get_tip_amount(20, 0.15) == Approx(3.0));
+    REQUIRE(get_tip_amount(30, 0.20) == Approx(6.0));
 }
