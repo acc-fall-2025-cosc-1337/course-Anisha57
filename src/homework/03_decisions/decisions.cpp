@@ -1,35 +1,58 @@
+// decisions.cpp
 #include "decisions.h"
-#include <string>
 
-// Using if-else-if ladder
-std::string get_letter_grade_using_if(int numerical_grade)
+string get_letter_grade_using_if(int grade)
 {
-    if (numerical_grade >= 90 && numerical_grade <= 100) return "A";
-    else if (numerical_grade >= 80 && numerical_grade <= 89) return "B";
-    else if (numerical_grade >= 70 && numerical_grade <= 79) return "C";
-    else if (numerical_grade >= 60 && numerical_grade <= 69) return "D";
-    else if (numerical_grade >= 0  && numerical_grade <= 59) return "F";
-    else return "Invalid"; // out of expected range
+    string letter_grade;
+
+    if (grade >= 90 && grade <= 100)
+        letter_grade = "A";
+    else if (grade >= 80)
+        letter_grade = "B";
+    else if (grade >= 70)
+        letter_grade = "C";
+    else if (grade >= 60)
+        letter_grade = "D";
+    else if (grade >= 0)
+        letter_grade = "F";
+    else
+        letter_grade = "Invalid";
+
+    return letter_grade;
 }
 
-// Using switch - we use integer division to map ranges to cases
-std::string get_letter_grade_using_switch(int numerical_grade)
+string get_letter_grade_using_switch(int grade)
 {
-    if (numerical_grade < 0 || numerical_grade > 100) return "Invalid";
+    string letter_grade;
+    int tens = grade / 10;  // Divide by 10 to reduce the range
 
-    int tens = numerical_grade / 10; // 100 -> 10, 95 -> 9, 89 -> 8, etc.
-
-    switch (tens) {
-        case 10: // 100
-        case 9:  // 90 - 99
-            return "A";
-        case 8:  // 80 - 89
-            return "B";
-        case 7:  // 70 - 79
-            return "C";
-        case 6:  // 60 - 69
-            return "D";
-        default: // 0 - 5 -> F
-            return "F";
+    switch (tens)
+    {
+    case 10:
+    case 9:
+        letter_grade = "A";
+        break;
+    case 8:
+        letter_grade = "B";
+        break;
+    case 7:
+        letter_grade = "C";
+        break;
+    case 6:
+        letter_grade = "D";
+        break;
+    case 5:
+    case 4:
+    case 3:
+    case 2:
+    case 1:
+    case 0:
+        letter_grade = "F";
+        break;
+    default:
+        letter_grade = "Invalid";
     }
+
+    return letter_grade;
 }
+
