@@ -2,28 +2,30 @@
 #include <iostream>
 #include "hwexpressions.h"
 
-using namespace std;
+using std::cout;
+using std::cin;
 
 int main()
 {
-    double meal_amount, tip_rate;
-    double sales_tax, tip_amount, total;
+    double meal_amount;
+    double tip_rate;
 
-    cout << "Enter the meal amount: ";
+    cout << "Enter meal amount: ";
     cin >> meal_amount;
 
-    cout << "Enter the tip rate (e.g., 0.15 for 15%): ";
+    cout << "Enter tip rate (use decimal, for example 0.15 for 15%): ";
     cin >> tip_rate;
 
-    sales_tax = get_sales_tax_amount(meal_amount);
-    tip_amount = get_tip_amount(meal_amount, tip_rate);
-    total = meal_amount + sales_tax + tip_amount;
+    double tax = get_sales_tax_amount(meal_amount);
+    double tip = get_tip_amount(meal_amount, tip_rate);
+    double total = meal_amount + tax + tip;
 
-    cout << "\n--- Receipt ---" << endl;
-    cout << "Meal Amount: $" << meal_amount << endl;
-    cout << "Sales Tax:   $" << sales_tax << endl;
-    cout << "Tip Amount:  $" << tip_amount << endl;
-    cout << "Total:       $" << total << endl;
+    cout << "\n--- Receipt ---\n";
+    cout << "Meal Amount:   " << meal_amount << "\n";
+    cout << "Sales Tax:     " << tax << "\n";
+    cout << "Tip Amount:    " << tip << "\n";
+    cout << "Total:         " << total << "\n";
 
     return 0;
 }
+
