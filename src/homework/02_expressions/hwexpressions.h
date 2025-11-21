@@ -1,12 +1,11 @@
-second
-// hwexpressions.h
+#ifndef HWEXPRESSIONS_H
+#define HWEXPRESSIONS_H
 
-// Function to calculate sales tax
+// Sales tax rate
+const double tax_rate = 0.0675;
+
+// Function declarations
 double get_sales_tax_amount(double meal_amount);
-
-// Function to calculate tip
 double get_tip_amount(double meal_amount, double tip_rate);
 
-
-
-
+#endif // HWEXPRESSIONS_H
