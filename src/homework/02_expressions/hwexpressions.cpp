@@ -1,9 +1,6 @@
 // hwexpressions.cpp
 #include "hwexpressions.h"
 
-// Constant tax rate of 6.75%
-const double tax_rate = 0.0675;
-
 double get_sales_tax_amount(double meal_amount)
 {
     return meal_amount * tax_rate;
