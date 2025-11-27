@@ -1,8 +1,10 @@
-﻿project(hw_01_library)
 
-add_library(hw_01_library "data_types.cpp" "data_types.h")
-add_executable(hw_01_exe "main.cpp" "data_types.cpp")
+#include "data_types.h"
 
+#example
+int add_numbers(int num1, int num2)
+{
+return num1 + num2;
+}
 
-
-
+#write function code here
