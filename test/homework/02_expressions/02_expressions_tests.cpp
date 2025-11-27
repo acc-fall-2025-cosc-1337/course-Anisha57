@@ -1,14 +1,14 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch.hpp"
+#include <iostream>
 #include "hwexpressions.h"
+#include <cassert>
 
-TEST_CASE("Verify Test Configuration", "verification") {
-	REQUIRE(true == true);
+int main() {
+    // Test sales tax
+    assert(get_sales_tax_amount(20.0) == 20.0 * 0.0675);
+    
+    // Test tip amount
+    assert(get_tip_amount(20.0, 0.15) == 20.0 * 0.15);
+    
+    std::cout << "All tests passed!" << std::endl;
+    return 0;
 }
-
-TEST_CASE("Verify sum_numbers function") 
-{
-	REQUIRE(add_numbers(5, 5) == 10);
-	REQUIRE(add_numbers(10, 10) == 20);
-}
-
