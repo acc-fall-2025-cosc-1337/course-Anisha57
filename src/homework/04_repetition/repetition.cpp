@@ -12,3 +12,19 @@ int get_factorial(int num)
     return result;
 }
 
+int sum_odd_numbers(int num)
+{
+    int sum = 0;
+    int i = 1;
+
+    while(i <= num)
+    {
+        if(i % 2 != 0)
+        {
+            sum += i;
+        }
+        i++;
+    }
+
+    return sum;
+}
