@@ -1,4 +1,3 @@
-// test/homework/01_data_types/01_data_types_tests.cpp
 #include <iostream>
 #include "../../../src/homework/01_data_types/data_types.h"
 using namespace std;
@@ -20,4 +19,3 @@ int main()
 
     return 0;
 }
-
