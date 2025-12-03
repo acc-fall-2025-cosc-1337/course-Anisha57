@@ -1,47 +1,48 @@
 #include <iostream>
 #include "repetition.h"
 
+using namespace std;
+
 int main()
 {
-    int choice = 0;
+    int option;
+    
+    do
+    {
+        cout << "\nHomework 4 Menu\n";
+        cout << "1 - Factorial\n";
+        cout << "2 - Sum odd numbers\n";
+        cout << "3 - Exit\n";
+        cout << "Enter option: ";
+        cin >> option;
 
-    do {
-        std::cout << "\nHomework 4 Menu\n";
-        std::cout << "1-Factorial\n";
-        std::cout << "2-Sum odd numbers\n";
-        std::cout << "3-Exit\n";
-        std::cout << "Enter choice: ";
-        std::cin >> choice;
+        if(option == 1)
+        {
+            int num;
+            do
+            {
+                cout << "Enter a number (1-9): ";
+                cin >> num;
+            } 
+            while(num <= 0 || num >= 10);
 
-        if (choice == 1) {
-            int n = 0;
-            do {
-                std::cout << "Enter a number 1 to 9: ";
-                std::cin >> n;
-            } while (n <= 0 || n >= 10);
-
-            int fact = get_factorial(n);
-            std::cout << "Factorial of " << n << " is " << fact << "\n";
+            cout << "Factorial = " << get_factorial(num) << "\n";
         }
-        else if (choice == 2) {
-            int n = 0;
-            do {
-                std::cout << "Enter a number 1 to 99: ";
-                std::cin >> n;
-            } while (n <= 0 || n >= 100);
+        else if(option == 2)
+        {
+            int num;
+            do
+            {
+                cout << "Enter a number (1-99): ";
+                cin >> num;
+            } 
+            while(num <= 0 || num >= 100);
 
-            int sum = sum_odd_numbers(n);
-            std::cout << "Sum of odd numbers up to " << n << " is " << sum << "\n";
-        }
-        else if (choice == 3) {
-            std::cout << "Exiting.\n";
-        }
-        else {
-            std::cout << "Invalid choice. Try again.\n";
+            cout << "Sum of odd numbers = " << sum_odd_numbers(num) << "\n";
         }
 
-    } while (choice != 3);
+    } while(option != 3);
 
+    cout << "Exiting...\n";
     return 0;
 }
-
