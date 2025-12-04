@@ -1,6 +1,6 @@
 #include "tic_tac_toe.h"
 #include <iostream>
-
+#include <cmath>
 
 bool TicTacToe::game_over() {
     if (check_column_win() || check_row_win() || check_diagonal_win()) {
@@ -32,19 +32,34 @@ std::string TicTacToe::get_player() const {
 }
 
 void TicTacToe::display_board() const {
+    int size = std::sqrt(pegs.size());
     std::cout << "\n";
-    std::cout << pegs[0] << "|" << pegs[1] << "|" << pegs[2] << "\n";
-    std::cout << "-+-+-\n";
-    std::cout << pegs[3] << "|" << pegs[4] << "|" << pegs[5] << "\n";
-    std::cout << "-+-+-\n";
-    std::cout << pegs[6] << "|" << pegs[7] << "|" << pegs[8] << "\n";
+    
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            std::cout << pegs[i * size + j];
+            if (j < size - 1) {
+                std::cout << "|";
+            }
+        }
+        std::cout << "\n";
+        
+        if (i < size - 1) {
+            for (int j = 0; j < size; j++) {
+                std::cout << "-";
+                if (j < size - 1) {
+                    std::cout << "+";
+                }
+            }
+            std::cout << "\n";
+        }
+    }
     std::cout << "\n";
 }
 
 std::string TicTacToe::get_winner() const {
     return winner;
 }
-
 
 void TicTacToe::set_next_player() {
     if (player == "X") {
@@ -55,7 +70,7 @@ void TicTacToe::set_next_player() {
 }
 
 bool TicTacToe::check_board_full() {
-    for (int i = 0; i < 9; i++) {
+    for (size_t i = 0; i < pegs.size(); i++) {
         if (pegs[i] == " ") {
             return false;
         }
@@ -64,45 +79,22 @@ bool TicTacToe::check_board_full() {
 }
 
 void TicTacToe::clear_board() {
-    for (int i = 0; i < 9; i++) {
+    for (size_t i = 0; i < pegs.size(); i++) {
         pegs[i] = " ";
     }
     winner = "";
 }
 
+
 bool TicTacToe::check_column_win() {
-    if (pegs[0] != " " && pegs[0] == pegs[3] && pegs[3] == pegs[6]) {
-        return true;
-    }
-    if (pegs[1] != " " && pegs[1] == pegs[4] && pegs[4] == pegs[7]) {
-        return true;
-    }
-    if (pegs[2] != " " && pegs[2] == pegs[5] && pegs[5] == pegs[8]) {
-        return true;
-    }
     return false;
 }
 
 bool TicTacToe::check_row_win() {
-    if (pegs[0] != " " && pegs[0] == pegs[1] && pegs[1] == pegs[2]) {
-        return true;
-    }
-    if (pegs[3] != " " && pegs[3] == pegs[4] && pegs[4] == pegs[5]) {
-        return true;
-    }
-    if (pegs[6] != " " && pegs[6] == pegs[7] && pegs[7] == pegs[8]) {
-        return true;
-    }
     return false;
 }
 
 bool TicTacToe::check_diagonal_win() {
-    if (pegs[0] != " " && pegs[0] == pegs[4] && pegs[4] == pegs[8]) {
-        return true;
-    }
-    if (pegs[6] != " " && pegs[6] == pegs[4] && pegs[4] == pegs[2]) {
-        return true;
-    }
     return false;
 }
 
@@ -113,4 +105,3 @@ void TicTacToe::set_winner() {
         winner = "X";
     }
 }
-
