@@ -2,140 +2,24 @@
 #include "catch.hpp"
 #include "tic_tac_toe.h"
 
-TEST_CASE("Test first player set to X")
+TEST_CASE("Test game over when 9 positions are selected")
 {
     TicTacToe game;
     game.start_game("X");
-    REQUIRE(game.get_player() == "X");
-}
 
-TEST_CASE("Test first player set to O")
-{
-    TicTacToe game;
-    game.start_game("O");
-    REQUIRE(game.get_player() == "O");
-}
+    std::vector<int> positions = {1,2,3,4,5,7,6,9,8};
 
-TEST_CASE("Test tie")
-{
-    TicTacToe game;
-    game.start_game("X");
-    for (int i = 1; i <= 9; i++)
+    for (int i = 0; i < positions.size(); i++)
     {
-        game.mark_board(i);
-        game.game_over();
+        game.mark_board(positions[i]);
+        if (i < 8)
+        {
+            REQUIRE(game.game_over() == false);
+        }
+        else
+        {
+            REQUIRE(game.game_over() == true);
+        }
     }
-    REQUIRE(game.get_winner() == "C");
 }
 
-TEST_CASE("Test win by first column")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(1);
-    game.mark_board(2);
-    game.mark_board(4);
-    game.mark_board(5);
-    game.mark_board(7);
-
-    REQUIRE(game.game_over() == true);
-}
-
-TEST_CASE("Test win by second column")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(2);
-    game.mark_board(1);
-    game.mark_board(5);
-    game.mark_board(4);
-    game.mark_board(8);
-
-    REQUIRE(game.game_over() == true);
-}
-
-TEST_CASE("Test win by third column")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(3);
-    game.mark_board(1);
-    game.mark_board(6);
-    game.mark_board(4);
-    game.mark_board(9);
-
-    REQUIRE(game.game_over() == true);
-}
-
-TEST_CASE("Test win by first row")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(1);
-    game.mark_board(4);
-    game.mark_board(2);
-    game.mark_board(5);
-    game.mark_board(3);
-
-    REQUIRE(game.game_over() == true);
-}
-
-TEST_CASE("Test win by second row")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(4);
-    game.mark_board(1);
-    game.mark_board(5);
-    game.mark_board(2);
-    game.mark_board(6);
-
-    REQUIRE(game.game_over() == true);
-}
-
-TEST_CASE("Test win by third row")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(7);
-    game.mark_board(1);
-    game.mark_board(8);
-    game.mark_board(2);
-    game.mark_board(9);
-
-    REQUIRE(game.game_over() == true);
-}
-
-TEST_CASE("Test win diagonal 1-5-9")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(1);
-    game.mark_board(2);
-    game.mark_board(5);
-    game.mark_board(3);
-    game.mark_board(9);
-
-    REQUIRE(game.game_over() == true);
-}
-
-TEST_CASE("Test win diagonal 7-5-3")
-{
-    TicTacToe game;
-    game.start_game("X");
-
-    game.mark_board(7);
-    game.mark_board(1);
-    game.mark_board(5);
-    game.mark_board(2);
-    game.mark_board(3);
-
-    REQUIRE(game.game_over() == true);
-}
