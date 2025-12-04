@@ -67,6 +67,7 @@ void TicTacToe::clear_board() {
     for (int i = 0; i < 9; i++) {
         pegs[i] = " ";
     }
+    winner = "";
 }
 
 bool TicTacToe::check_column_win() {
@@ -112,3 +113,4 @@ void TicTacToe::set_winner() {
         winner = "X";
     }
 }
+

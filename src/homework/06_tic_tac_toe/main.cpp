@@ -1,7 +1,9 @@
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"  
 #include <iostream>
 
 int main() {
+    TicTacToeManager manager;  
     TicTacToe game;
     std::string first_player;
     char continue_game = 'y';
@@ -27,7 +29,7 @@ int main() {
         game.start_game(first_player);
         
         while (!game.game_over()) {
-            game.display_board();
+            game.display_board();  
             
             int position;
             std::cout << "Player " << game.get_player() << " enter position (1-9): ";
@@ -50,10 +52,26 @@ int main() {
             std::cout << "Player " << winner << " wins!\n";
         }
         
+        manager.save_game(game);
+        
+        int o_wins, x_wins, ties;
+        manager.get_winner_total(o_wins, x_wins, ties);
+        std::cout << "\n=== SCOREBOARD ===\n";
+        std::cout << "X wins: " << x_wins << "\n";
+        std::cout << "O wins: " << o_wins << "\n";
+        std::cout << "Ties: " << ties << "\n";
+        std::cout << "==================\n";
         std::cout << "\nPlay again? (y/n): ";
         std::cin >> continue_game;
     }
     
-    std::cout << "Thanks for playing!\n";
+    std::cout << "\nFinal Scores:\n";
+    int o_wins, x_wins, ties;
+    manager.get_winner_total(o_wins, x_wins, ties);
+    std::cout << "X wins: " << x_wins << "\n";
+    std::cout << "O wins: " << o_wins << "\n";
+    std::cout << "Ties: " << ties << "\n";
+    std::cout << "\nThanks for playing!\n";
+    
     return 0;
 }
